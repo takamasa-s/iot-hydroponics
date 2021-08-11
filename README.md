@@ -26,23 +26,23 @@
 
 ## 2. キット内容物確認
 
-![キット内容物](kit.png)
+<img width="500" src="https://github.com/takamasa-s/iot-hydroponics/blob/main/kit.png">
 
-①Raspberry Pi Zero WH
+- [ ] ①Raspberry Pi Zero WH
 
-②Raspberry Pi用Grove Base Hat
+- [ ] ②Raspberry Pi用Grove Base Hat
 
-③Grove - TDS水質センサ
+- [ ] ③Grove - TDS水質センサ
 
-④Grove - 温度及び湿度センサ
+- [ ] ④Grove - 温度及び湿度センサ
 
-⑤Grove 4-pin（予備）
+- [ ] ⑤Grove 4-pin（予備）
 
-⑥USBケーブル
+- [ ] ⑥USBケーブル
 
-⑦SDカード
+- [ ] ⑦SDカード
 
-・水耕栽培キット
+- [ ] 水耕栽培キット
 
 https://www.motom-jp.com/2021/03/29/oma14/
 
@@ -55,7 +55,26 @@ https://www.raspberrypi.org/software/
 
 ②Raspberry Pi OS (32-bit)を選択してインストール
 
-③
+### Raspberry Pi Zero WH Wi-Fi設定
+
+①コマンドプロンプトから下記を実行。
+```shell
+type nul > D:\ssh
+type nul > D:\wpa_supplicant.conf
+```
+*Dドライブの場合
+
+②wpa_supplicant.confに下記を記載。SSIDとパスワードは自身のものを。
+```
+country=JP
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+network={
+   ssid="SSID"
+   psk="password"
+}
+```
+
 
 
 
