@@ -181,6 +181,9 @@ https://ambidata.io/
 
 `/home/pi/sensor/`に`grove_temperature_humidity_sensor.py`を作成。
 
+<details>
+<summary>温湿度センサ用クラス</summary>
+
 ```python:grove_temperature_humidity_sensor.py
 import RPi.GPIO as GPIO
 # from grove.helper import *
@@ -318,12 +321,16 @@ class DHT(object):
         self._last_humi,self._last_temp = humi, temp
         return humi, temp
 ```
+</details>
 
 <br />
 
 ### TDS水質センサ用クラス作成
 
 `/home/pi/sensor/`に`grove_tds.py`を作成。
+
+<details>
+<summary>TDS水質センサ用クラス</summary>
 
 ```python:grove_tds.py
 import math
@@ -347,7 +354,7 @@ class GroveTDS:
         else:
             return 0
 ```
-
+</details>
 <br />
 
 ### 実行プログラム作成
