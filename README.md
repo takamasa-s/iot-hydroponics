@@ -16,8 +16,7 @@
    - Raspberry Pi/水耕栽培キットの連結
 4. 参考にさせていただいたサイト
 
-
-
+<br />
 
 ## 1. はじめに
 マンションのベランダで家庭菜園をやっているが、
@@ -30,6 +29,8 @@
 キットを組み立て終わると、こんな完成系になる。
 
 https://ambidata.io/bd/board.html?id=29980
+
+<br />
 
 ## 2. キット内容物確認
 
@@ -53,6 +54,8 @@ https://ambidata.io/bd/board.html?id=29980
 
 https://www.motom-jp.com/2021/03/29/oma14/
 
+<br />
+
 ## 3. セットアップ手順
 
 ### Raspberry Pi Zero WH OSインストール
@@ -62,6 +65,8 @@ https://www.motom-jp.com/2021/03/29/oma14/
 https://www.raspberrypi.org/software/
 
 ② Raspberry Pi OS (32-bit)を選択してインストール
+
+<br />
 
 ### Raspberry Pi Zero WH SSH、Wi-Fi設定
 
@@ -144,6 +149,8 @@ pi@raspberrypi:~ $ sudo apt-get install -y vim-gtk
 pi@raspberrypi:~ $ echo "set clipboard=unnamedplus" >> .vimrc
 ```
 
+<br />
+
 ### Grove Base HAT、センサ取り付け
 
 ① Raspberry Piの電源を切る（USBから抜く）
@@ -158,6 +165,8 @@ Raspberry Pi用Grove Base Hat Wiki
 
 https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/
 
+<br />
+
 ### Ambientチャネル作成
 
 ① 下記サイトにてアカウント作成
@@ -165,6 +174,8 @@ https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/
 https://ambidata.io/
 
 ② `チャネル一覧`から`チャネルを作る`をクリック
+
+<br />
 
 ### 温湿度センサ用クラス作成
 
@@ -308,6 +319,8 @@ class DHT(object):
         return humi, temp
 ```
 
+<br />
+
 ### TDS水質センサ用クラス作成
 
 `/home/pi/sensor/`に`grove_tds.py`を作成。
@@ -334,6 +347,8 @@ class GroveTDS:
         else:
             return 0
 ```
+
+<br />
 
 ### 実行プログラム作成
 
@@ -388,6 +403,8 @@ if __name__ == '__main__':
 
 `AMBIENT_CHANNEL_ID`、`AMBIENT_WRITE_KEY`
 
+<br />
+
 ### プログラム自動起動設定
 
 ```bash
@@ -414,6 +431,8 @@ pi@raspberrypi:~ $ sudo systemctl start gardening-system.service
 pi@raspberrypi:~ $ systemctl status gardening-system.service
 ```
 
+<br />
+
 ### Ambient動作確認
 
 ```bash
@@ -424,13 +443,19 @@ pi@raspberrypi:~ $ ps -ef | grep -v grep | grep gardening_system.py
 
 Ambientで作成したチャネルでデータをグラフ化できていればOK。
 
+<br />
+
 ### 水耕栽培キット組み立て
 
 説明書の通りに組み立てる。
 
+<br />
+
 ### Raspberry Pi/水耕栽培キットの連結
 
 TDS水質センサを水耕栽培キットの空いている穴に差してAmbientでデータが取れていることを確認。
+
+<br />
 
 ### 参考にさせていただいたサイト
 
