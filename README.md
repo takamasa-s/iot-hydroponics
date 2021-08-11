@@ -148,6 +148,7 @@ pi@raspberrypi:~ $ echo "set clipboard=unnamedplus" >> .vimrc
 ④温度及び湿度センサをBase HatのPWMポートに、TDS水質センサをA0ポートに接続
 
 Raspberry Pi用Grove Base Hat Wiki
+
 https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/
 
 ### Ambientチャネル作成
@@ -411,6 +412,7 @@ pi@raspberrypi:~ $ sudo systemctl status gardening-system.service
 
 ```bash
 pi@raspberrypi:~ $ sudo reboot
+pi@raspberrypi:~ $ ps -ef | grep -v gre | grep gardening_system.py
 ```
 
 Ambientで作成したチャネルでデータをグラフ化できていればOK。
