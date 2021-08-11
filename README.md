@@ -1,4 +1,4 @@
-# IoT水耕栽培をはじめてみる
+# IoT水耕栽培、はじめてみた
 ## 目次
 1. はじめに
 2. キット内容物確認
@@ -372,16 +372,7 @@ if __name__ == '__main__':
 
 以下の変数を作成したAmbientのチャネルのID、キーに置き換える。
 
-`AMBIENT_CHANNEL_ID`
-
-`AMBIENT_WRITE_KEY`
-
-```bash
-pi@raspberrypi:~ $ chmod 755 g*
-pi@raspberrypi:~ $ ls -l
-pi@raspberrypi:~ $ python3 gardening_system.py
-```
-
+`AMBIENT_CHANNEL_ID`、`AMBIENT_WRITE_KEY`
 
 ### プログラム自動起動設定
 
@@ -411,12 +402,17 @@ pi@raspberrypi:~ $ sudo systemctl status gardening-system.service
 
 ### Ambient動作確認
 
-Ambientで作成したチャネルでデータをグラフ化できていればOK
+
+```bash
+pi@raspberrypi:~ $ sudo reboot
+```
+
+Ambientで作成したチャネルでデータをグラフ化できていればOK。
 
 ### 水耕栽培キット組み立て
 
-説明書の通りに組み立てる
+説明書の通りに組み立てる。
 
 ### Raspberry Pi/水耕栽培キットの連結
 
-TDS水質センサを水耕栽培キットの空いている穴に差してAmbientでデータが取れていることを確認
+TDS水質センサを水耕栽培キットの空いている穴に差してAmbientでデータが取れていることを確認。
