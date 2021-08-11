@@ -51,7 +51,7 @@
 
 - [ ] ⑥ マイクロUSBケーブル
 
-- [ ] ⑦ SDカード（Raspberry Pi OSの要求により4GB以上（8GB以上推奨））
+- [ ] ⑦ SDカード（Raspberry Pi OSの要求により4GB以上（念のため8GB以上推奨））
 
 - [ ] 水耕栽培キット [LED水耕栽培器 Akarina14 (OMA14)](https://www.motom-jp.com/2021/03/29/oma14/)
 
