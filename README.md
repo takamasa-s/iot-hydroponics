@@ -371,7 +371,9 @@ if __name__ == '__main__':
 ```
 
 以下の変数を作成したAmbientのチャネルのID、キーに置き換える。
+
 `AMBIENT_CHANNEL_ID`
+
 `AMBIENT_WRITE_KEY`
 
 ```bash
