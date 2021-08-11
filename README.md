@@ -72,7 +72,7 @@ https://www.raspberrypi.org/software/
 ### Raspberry Pi Zero WH SSH、Wi-Fi設定
 
 ① コマンドプロンプトから下記を実行。
-```shell
+```bash
 type nul > D:\ssh
 type nul > D:\wpa_supplicant.conf
 ```
@@ -183,7 +183,7 @@ https://ambidata.io/
 <details>
 <summary>温湿度センサ用クラス</summary>
 
-```python3:grove_temperature_humidity_sensor.py
+``` python:grove_temperature_humidity_sensor.py
 import RPi.GPIO as GPIO
 # from grove.helper import *
 def set_max_priority(): pass
@@ -331,7 +331,7 @@ class DHT(object):
 <details>
 <summary>TDS水質センサ用クラス</summary>
 
-```Python3:grove_tds.py
+``` python:grove_tds.py
 import math
 import sys
 import time
@@ -360,7 +360,7 @@ class GroveTDS:
 
 `/home/pi/`に`gardening_system.py`を作成。
 
-```python3:gardening_system.py
+```python:gardening_system.py
 #!/usr/bin/env python3
 import ambient
 import sys
