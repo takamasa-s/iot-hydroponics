@@ -5,7 +5,7 @@
 3. セットアップ手順
    - Raspberry Pi Zero WH OSインストール
    - Raspberry Pi Zero WH SSH、Wi-Fi設定
-   - Grove Base HAT、センサ取り付け
+   - Grove Base Hat、センサ取り付け
    - Ambientチャネル作成
    - 温湿度センサ用クラス作成
    - TDS水質センサ用クラス作成
@@ -29,7 +29,7 @@
 
 <br />
 
-キットを組み立て終わると、こんな完成系になりました。
+キットを組み立て終わると、こんな感じに仕上がりました。
 
 <img width="500" src="https://github.com/takamasa-s/iot-hydroponics/blob/main/iot_suiko.jpg">
 
@@ -78,7 +78,7 @@ type nul > D:\wpa_supplicant.conf
 ```
 *Dドライブの場合
 
-② wpa_supplicant.confに下記を記載。SSIDとパスワードは自身のものを。
+② wpa_supplicant.confに下記を記載。`SSID`と`password`は自身のものを。
 ```
 country=JP
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -95,12 +95,12 @@ https://download.info.apple.com/Mac_OS_X/061-8098.20100603.gthyu/BonjourPSSetup.
 
 インストール後、PC再起動
 
-④ Raspberry PiにMicro SBカードをさしてUSBケーブルで給電
+④ Raspberry PiにMicro SDカードをさしてUSBケーブルで給電
 （緑のLEDが点灯したらOS起動完了）
 
 ⑤ Teraterm等端末エミュレータで接続
 
-ホスト名：`raspberripi.local`
+ホスト名：`raspberrypi.local`
 
 ユーザ名：`pi`
 
@@ -121,12 +121,12 @@ pi@raspberrypi:~ $ sudo timedatectl set-timezone Asia/Tokyo
 pi@raspberrypi:~ $ timedatectl
 ```
 
-⑧ grove.pyインストール
+⑧ `grove.py`インストール
 ```bash
 pi@raspberrypi:~ $ curl -sL https://github.com/Seeed-Studio/grove.py/raw/master/install.sh | sudo bash -s -
 ```
 
-⑨ AmbientのPython用ライブラリ（ambient-python-lib）インストール
+⑨ AmbientのPython用ライブラリ（`ambient-python-lib`）インストール
 ```bash
 pi@raspberrypi:~ $ sudo pip3 install git+https://github.com/AmbientDataInc/ambient-python-lib.git
 pi@raspberrypi:~ $ sudo pip3 install schedule
@@ -143,7 +143,7 @@ pi@raspberrypi:~ $ i2cdetect -y 1
 ```
 
 
-⑪ vim-gtkインストール（vimのヤンクをクリップボード経由でおこなえるようにする）
+⑪ `vim-gtk`インストール（vimのヤンクをクリップボード経由でおこなえるようにする）
 ```bash
 pi@raspberrypi:~ $ sudo apt remove -y vim
 pi@raspberrypi:~ $ sudo apt-get install -y vim-gtk
@@ -152,13 +152,13 @@ pi@raspberrypi:~ $ echo "set clipboard=unnamedplus" >> .vimrc
 
 <br />
 
-### Grove Base HAT、センサ取り付け
+### Grove Base Hat、センサ取り付け
 
 ① Raspberry Piの電源を切る（USBから抜く）
 
 ② Raspberry Piに支柱を取り付ける
 
-③ Base HATをRaspberry Piに取り付ける
+③ Base HatをRaspberry Piに取り付ける
 
 ④ 温度及び湿度センサをBase HatのPWMポートに、TDS水質センサをA0ポートに接続
 
@@ -183,7 +183,7 @@ https://ambidata.io/
 <details>
 <summary>温湿度センサ用クラス</summary>
 
-```python:grove_temperature_humidity_sensor.py
+```python3:grove_temperature_humidity_sensor.py
 import RPi.GPIO as GPIO
 # from grove.helper import *
 def set_max_priority(): pass
@@ -331,7 +331,7 @@ class DHT(object):
 <details>
 <summary>TDS水質センサ用クラス</summary>
 
-```python:grove_tds.py
+```Python3:grove_tds.py
 import math
 import sys
 import time
@@ -360,7 +360,7 @@ class GroveTDS:
 
 `/home/pi/`に`gardening_system.py`を作成。
 
-```python:gardening_system.py
+```python3:gardening_system.py
 #!/usr/bin/env python3
 import ambient
 import sys
@@ -405,7 +405,7 @@ if __name__ == '__main__':
     main()
 ```
 
-以下の変数を作成したAmbientのチャネルのID、キーに置き換える。
+以下の変数を作成したAmbientのチャネルID、キーに置き換える。
 
 `AMBIENT_CHANNEL_ID`、`AMBIENT_WRITE_KEY`
 
