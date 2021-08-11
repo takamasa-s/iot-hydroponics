@@ -450,6 +450,15 @@ pi@raspberrypi:~ $ ps -ef | grep -v grep | grep gardening_system.py
 
 Ambientで作成したチャネルでデータをグラフ化できていればOK。
 
+- 温湿度センサ：0~50℃（±2℃）、20%~90%RH（±5%RH）
+
+- TDS水質センサ：TDS(Total Dissolved Solids:総溶解固形物)
+
+| TDSメーター | 水道水 | 浄水 |
+| ------------- | ------------- | ------------- |
+| TDS水質センサ  | 約215ppm | 約17ppm |
+| TDS1(ハンナ製)  | 約124ppm | 約4~26ppm |
+
 <br />
 
 ### 水耕栽培キット組み立て
