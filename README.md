@@ -28,19 +28,19 @@
 
 <img width="500" src="https://github.com/takamasa-s/iot-hydroponics/blob/main/kit.png">
 
-- [ ] ①Raspberry Pi Zero WH
+- [ ] ① Raspberry Pi Zero WH
 
-- [ ] ②Raspberry Pi用Grove Base Hat
+- [ ] ② Raspberry Pi用Grove Base Hat
 
-- [ ] ③Grove - TDS水質センサ
+- [ ] ③ Grove - TDS水質センサ
 
-- [ ] ④Grove - 温度及び湿度センサ
+- [ ] ④ Grove - 温度及び湿度センサ
 
-- [ ] ⑤Grove 4-pin（予備）
+- [ ] ⑤ Grove 4-pin（予備）
 
-- [ ] ⑥USBケーブル
+- [ ] ⑥ USBケーブル
 
-- [ ] ⑦SDカード
+- [ ] ⑦ SDカード
 
 - [ ] 水耕栽培キット
 
@@ -50,22 +50,22 @@ https://www.motom-jp.com/2021/03/29/oma14/
 
 ### Raspberry Pi Zero WH OSインストール
 
-①イメージャーのダウンロード
+① イメージャーのダウンロード
 
 https://www.raspberrypi.org/software/
 
-②Raspberry Pi OS (32-bit)を選択してインストール
+② Raspberry Pi OS (32-bit)を選択してインストール
 
 ### Raspberry Pi Zero WH SSH、Wi-Fi設定
 
-①コマンドプロンプトから下記を実行。
+① コマンドプロンプトから下記を実行。
 ```shell
 type nul > D:\ssh
 type nul > D:\wpa_supplicant.conf
 ```
 *Dドライブの場合
 
-②wpa_supplicant.confに下記を記載。SSIDとパスワードは自身のものを。
+② wpa_supplicant.confに下記を記載。SSIDとパスワードは自身のものを。
 ```
 country=JP
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -76,16 +76,16 @@ network={
 }
 ```
 
-③Bonjourインストール
+③ Bonjourインストール
 
 https://download.info.apple.com/Mac_OS_X/061-8098.20100603.gthyu/BonjourPSSetup.exe
 
 インストール後、PC再起動
 
-④Raspberry PiにMicro SBカードをさしてUSBケーブルで給電
+④ Raspberry PiにMicro SBカードをさしてUSBケーブルで給電
 （緑のLEDが点灯したらOS起動完了）
 
-⑤Teraterm等端末エミュレータで接続
+⑤ Teraterm等端末エミュレータで接続
 
 ホスト名：`raspberripi.local`
 
@@ -93,14 +93,14 @@ https://download.info.apple.com/Mac_OS_X/061-8098.20100603.gthyu/BonjourPSSetup.
 
 パスワード：`raspberry`
 
-⑥パッケージ更新
+⑥ パッケージ更新
 ```bash
 pi@raspberrypi:~ $ sudo apt-get update -y
 pi@raspberrypi:~ $ sudo apt-get upgrade -y
 pi@raspberrypi:~ $ sudo apt-get dist-upgrade -y
 ```
 
-⑦タイムゾーン変更
+⑦ タイムゾーン変更
 ```bash
 pi@raspberrypi:~ $ timedatectl
 pi@raspberrypi:~ $ timedatectl list-timezones | grep Asia/Tokyo
@@ -108,18 +108,18 @@ pi@raspberrypi:~ $ sudo timedatectl set-timezone Asia/Tokyo
 pi@raspberrypi:~ $ timedatectl
 ```
 
-⑧grove.pyインストール
+⑧ grove.pyインストール
 ```bash
 pi@raspberrypi:~ $ curl -sL https://github.com/Seeed-Studio/grove.py/raw/master/install.sh | sudo bash -s -
 ```
 
-⑨AmbientのPython用ライブラリ（ambient-python-lib）インストール
+⑨ AmbientのPython用ライブラリ（ambient-python-lib）インストール
 ```bash
 pi@raspberrypi:~ $ sudo pip3 install git+https://github.com/AmbientDataInc/ambient-python-lib.git
 pi@raspberrypi:~ $ sudo pip3 install schedule
 ```
 
-⑩I2C（Inter Integrated Circuit）有効化
+⑩ I2C（Inter Integrated Circuit）有効化
 ```bash
 pi@raspberrypi:~ $ sudo apt-get install i2c-tools
 pi@raspberrypi:~ $ sudo raspi-config
@@ -130,7 +130,7 @@ pi@raspberrypi:~ $ sudo i2cdetect -y 1
 ```
 
 
-⑪vim-gtkインストール（vimのヤンクをクリップボード経由でおこなえるようにする）
+⑪ vim-gtkインストール（vimのヤンクをクリップボード経由でおこなえるようにする）
 ```bash
 pi@raspberrypi:~ $ sudo apt remove -y vim
 pi@raspberrypi:~ $ sudo apt-get install -y vim-gtk
@@ -139,13 +139,13 @@ pi@raspberrypi:~ $ echo "set clipboard=unnamedplus" >> .vimrc
 
 ### Grove Base HAT、センサ取り付け
 
-①Raspberry Piの電源を切る（USBから抜く）
+① Raspberry Piの電源を切る（USBから抜く）
 
-②Raspberry Piに支柱を取り付ける
+② Raspberry Piに支柱を取り付ける
 
-③Base HATをRaspberry Piに取り付ける
+③ Base HATをRaspberry Piに取り付ける
 
-④温度及び湿度センサをBase HatのPWMポートに、TDS水質センサをA0ポートに接続
+④ 温度及び湿度センサをBase HatのPWMポートに、TDS水質センサをA0ポートに接続
 
 Raspberry Pi用Grove Base Hat Wiki
 
@@ -153,11 +153,11 @@ https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/
 
 ### Ambientチャネル作成
 
-①下記サイトにてアカウント作成
+① 下記サイトにてアカウント作成
 
 https://ambidata.io/
 
-②`チャネル一覧`から`チャネルを作る`をクリック
+② `チャネル一覧`から`チャネルを作る`をクリック
 
 ### 温湿度センサ用クラス作成
 
@@ -409,10 +409,9 @@ pi@raspberrypi:~ $ sudo systemctl status gardening-system.service
 
 ### Ambient動作確認
 
-
 ```bash
 pi@raspberrypi:~ $ sudo reboot
-pi@raspberrypi:~ $ ps -ef | grep -v gre | grep gardening_system.py
+pi@raspberrypi:~ $ ps -ef | grep -v grep | grep gardening_system.py
 ```
 
 Ambientで作成したチャネルでデータをグラフ化できていればOK。
