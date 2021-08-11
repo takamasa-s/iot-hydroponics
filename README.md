@@ -126,7 +126,7 @@ pi@raspberrypi:~ $ sudo raspi-config
 ```
 `3 Interface Options`⇒`P5 I2C`⇒`Yes`⇒`OK`を選択。
 ```bash
-pi@raspberrypi:~ $ sudo i2cdetect -y 1
+pi@raspberrypi:~ $ i2cdetect -y 1
 ```
 
 
@@ -384,7 +384,7 @@ if __name__ == '__main__':
 ### プログラム自動起動設定
 
 ```bash
-pi@raspberrypi:~ $ sudo vim gardening-system.service
+pi@raspberrypi:~ $ vi gardening-system.service
 ```
 
 以下を記載。
@@ -404,13 +404,14 @@ pi@raspberrypi:~ $ sudo mv gardening-system.service /etc/systemd/system/
 pi@raspberrypi:~ $ sudo systemctl enable gardening-system.service
 pi@raspberrypi:~ $ systemctl list-unit-files | grep gardening-system.service
 pi@raspberrypi:~ $ sudo systemctl start gardening-system.service
-pi@raspberrypi:~ $ sudo systemctl status gardening-system.service
+pi@raspberrypi:~ $ systemctl status gardening-system.service
 ```
 
 ### Ambient動作確認
 
 ```bash
 pi@raspberrypi:~ $ sudo reboot
+pi@raspberrypi:~ $ systemctl status gardening-system.service
 pi@raspberrypi:~ $ ps -ef | grep -v grep | grep gardening_system.py
 ```
 
