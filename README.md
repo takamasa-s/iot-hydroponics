@@ -19,18 +19,21 @@
 <br />
 
 ## 1. はじめに
-マンションのベランダで家庭菜園をやっているが、
+マンションのベランダで家庭菜園をやっているのですが、
 - 東向きのため午前中は日が入るがお昼以降は日が入らない
-- 日当たりの悪さか、他に場所がないのか、コバエの住処にされて困る
+- 日当たりの悪さか、他に住処がないのか、キノコバエの家にされて困る
 
-そこで太陽の日差しがなくても部屋の中で育てられる水耕栽培をはじめてみる。
-せっかくなので、ラズパイでセンサのデータを取得して植物の生育と環境情報を見える化する。
+そこで太陽の日差しがなくても部屋の中で育てられる水耕栽培をはじめてみました。
 
-キットを組み立て終わると、こんな完成系になる。
-
-https://ambidata.io/bd/board.html?id=29980
+せっかくなので、ラズパイでセンサのデータを取得して植物の生育と環境情報を見える化したいと思います。
 
 <br />
+
+キットを組み立て終わると、こんな完成系になりました。
+
+<img width="500" src="https://github.com/takamasa-s/iot-hydroponics/blob/main/iot_suiko.jpg">
+
+<img width="700" src="https://github.com/takamasa-s/iot-hydroponics/blob/main/ambient.png">
 
 ## 2. キット内容物確認
 
@@ -50,9 +53,7 @@ https://ambidata.io/bd/board.html?id=29980
 
 - [ ] ⑦ SDカード
 
-- [ ] 水耕栽培キット
-
-https://www.motom-jp.com/2021/03/29/oma14/
+- [ ] 水耕栽培キット [LED水耕栽培器 Akarina14 (OMA14)](https://www.motom-jp.com/2021/03/29/oma14/)
 
 <br />
 
@@ -161,9 +162,7 @@ pi@raspberrypi:~ $ echo "set clipboard=unnamedplus" >> .vimrc
 
 ④ 温度及び湿度センサをBase HatのPWMポートに、TDS水質センサをA0ポートに接続
 
-Raspberry Pi用Grove Base Hat Wiki
-
-https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/
+[参考] [Raspberry Pi用Grove Base Hat Wiki](https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/)
 
 <br />
 
@@ -463,7 +462,7 @@ Ambientで作成したチャネルでデータをグラフ化できていればO
 
 ### 水耕栽培キット組み立て
 
-説明書の通りに組み立てる。
+説明書の通りに組み立てます。
 
 <br />
 
