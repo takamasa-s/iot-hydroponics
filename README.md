@@ -1,7 +1,7 @@
 # IoT水耕栽培、はじめてみた
 ## 目次
 1. はじめに
-2. キット内容物確認
+2. 今回の内容物一覧
 3. セットアップ手順
    - Raspberry Pi Zero WH OSインストール
    - Raspberry Pi Zero WH SSH、Wi-Fi設定
@@ -23,9 +23,9 @@
 - 東向きのため午前中は日が入るがお昼以降は日が入らない
 - 日当たりの悪さか、他に住処がないのか、キノコバエの家にされて困る
 
-そこで太陽の日差しがなくても部屋の中で育てられる水耕栽培をはじめてみました。
+そこで太陽の日差しに左右されずに部屋の中でできる水耕栽培をはじめてみました。
 
-せっかくなので、ラズパイでセンサのデータを取得して植物の生育と環境情報を見える化したいと思います。
+せっかくなので、ラズパイでセンサデータを取得して生育環境の情報を見える化したいと思います。
 
 <br />
 
@@ -35,11 +35,11 @@
 
 <img width="700" src="https://github.com/takamasa-s/iot-hydroponics/blob/main/ambient.png">
 
-## 2. キット内容物確認
+## 2. 今回の内容物一覧
 
 <img width="500" src="https://github.com/takamasa-s/iot-hydroponics/blob/main/kit.png">
 
-- [ ] ① Raspberry Pi Zero WH
+- [ ] ① Raspberry Pi Zero WH（現時点の最新版Raspberry Pi 4のスペックはいらないので安さ重視）
 
 - [ ] ② Raspberry Pi用Grove Base Hat
 
@@ -47,7 +47,7 @@
 
 - [ ] ④ Grove - 温度及び湿度センサ
 
-- [ ] ⑤ Grove 4-pin（予備）
+- [ ] ⑤ Grove 4-pin（予備と思って買いましたが出番はなかったです）
 
 - [ ] ⑥ マイクロUSBケーブル
 
