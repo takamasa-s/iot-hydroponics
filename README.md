@@ -85,9 +85,12 @@ https://download.info.apple.com/Mac_OS_X/061-8098.20100603.gthyu/BonjourPSSetup.
 （緑のLEDが点灯したらOS起動完了）
 
 ⑤Teraterm等端末エミュレータで接続
-ホスト名：raspberripi.local
-ユーザ名：pi
-パスワード：raspberry
+
+ホスト名：`raspberripi.local`
+
+ユーザ名：`pi`
+
+パスワード：`raspberry`
 
 ⑥パッケージ更新
 ```bash
@@ -111,7 +114,26 @@ pi@raspberrypi:~ $ curl -sL https://github.com/Seeed-Studio/grove.py/raw/master/
 
 ⑨AmbientのPython用ライブラリ（ambient-python-lib）インストール
 ```bash
-pi@raspberrypi:~ $ sudo pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
+pi@raspberrypi:~ $ sudo pip3 install git+https://github.com/AmbientDataInc/ambient-python-lib.git
+pi@raspberrypi:~ $ sudo pip3 install schedule
+```
+
+⑩I2C（Inter Integrated Circuit）有効化
+```bash
+pi@raspberrypi:~ $ sudo apt-get install i2c-tools
+pi@raspberrypi:~ $ sudo raspi-config
+```
+`3 Interface Options`⇒`P5 I2C`⇒`Yes`⇒`OK`を選択。
+```bash
+pi@raspberrypi:~ $ sudo i2cdetect -y 1
+```
+
+
+⑪vim-gtkインストール（vimのヤンクをクリップボード経由でおこなえるようにする）
+```bash
+pi@raspberrypi:~ $ sudo apt remove -y vim
+pi@raspberrypi:~ $ sudo apt-get install -y vim-gtk
+pi@raspberrypi:~ $ echo "set clipboard=unnamedplus" >> .vimrc
 ```
 
 ### Grove Base HAT、センサ取り付け
@@ -137,7 +159,8 @@ https://ambidata.io/
 
 ### 温湿度センサ用プログラム作成
 
-`/home/pi/`に下記3つのプログラムを作成。
+`/home/pi/sensor/`に`grove_temperature_humidity_sensor.py`、`grove_tds.py`、
+`/home/pi/`に`gardening_system.py`を作成。
 
 ```python:grove_temperature_humidity_sensor.py
 import RPi.GPIO as GPIO
@@ -150,7 +173,6 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 PULSES_CNT = 41
-
 
 class DHT(object):
     DHT_TYPE = {
@@ -286,7 +308,6 @@ import sys
 import time
 from grove.adc import ADC
 
-
 class GroveTDS:
 
     def __init__(self, channel):
@@ -321,7 +342,6 @@ TDS_CHANNEL = 0
 AMBIENT_CHANNEL_ID = "-----"
 AMBIENT_WRITE_KEY = "----------------"
 
-
 def get_sensor_info():
     humi, temp = dht_sensor.read()
 
@@ -336,14 +356,12 @@ def get_sensor_info():
     except requests.exceptions.RequestException:
         pass
 
-
 def main():
     schedule.every(1).minutes.do(get_sensor_info)
 
     while True:
         schedule.run_pending()
         time.sleep(1)
-
 
 if __name__ == '__main__':
     dht_sensor = DHT(DHT_TYPE, DHT_PIN)
@@ -352,10 +370,21 @@ if __name__ == '__main__':
     main()
 ```
 
+以下の変数を作成したAmbientのチャネルのID、キーに置き換える。
+`AMBIENT_CHANNEL_ID`
+`AMBIENT_WRITE_KEY`
+
+```bash
+pi@raspberrypi:~ $ chmod 755 g*
+pi@raspberrypi:~ $ ls -l
+pi@raspberrypi:~ $ python3 gardening_system.py
+```
+
+
 ### プログラム自動起動設定
 
 ```bash
-pi@raspberrypi:~ $ sudo vim /etc/systemd/system/gardening-system.service
+pi@raspberrypi:~ $ sudo vim gardening-system.service
 ```
 
 以下を記載。
@@ -371,8 +400,11 @@ WantedBy=multi-user.target
 ```
 
 ```bash
+pi@raspberrypi:~ $ sudo mv gardening-system.service /etc/systemd/system/
 pi@raspberrypi:~ $ sudo systemctl enable gardening-system.service
+pi@raspberrypi:~ $ systemctl list-unit-files | grep gardening-system.service
 pi@raspberrypi:~ $ sudo systemctl start gardening-system.service
+pi@raspberrypi:~ $ sudo systemctl status gardening-system.service
 ```
 
 ### Ambient動作確認
