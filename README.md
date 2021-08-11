@@ -26,12 +26,39 @@
 
 ## 2. キット内容物確認
 
+![キット内容物](kit.png)
 
-①
+①Raspberry Pi Zero WH
 
+②Raspberry Pi用Grove Base Hat
+
+③Grove - TDS水質センサ
+
+④Grove - 温度及び湿度センサ
+
+⑤Grove 4-pin（予備）
+
+⑥USBケーブル
+
+⑦SDカード
+
+・水耕栽培キット
+
+https://www.motom-jp.com/2021/03/29/oma14/
 
 ## 3. セットアップ手順
 ### Raspberry Pi Zero WH OSインストール
+
+①イメージャーのダウンロード
+
+https://www.raspberrypi.org/software/
+
+②Raspberry Pi OS (32-bit)を選択してインストール
+
+③
+
+
+
 
 
 
