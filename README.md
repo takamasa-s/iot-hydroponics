@@ -7,8 +7,9 @@
    - Raspberry Pi Zero WH SSH、Wi-Fi設定
    - Grove Base HAT、センサ取り付け
    - Ambientチャネル作成
-   - 温湿度センサ用プログラム作成
-   - TDS水質センサ用プログラム作成
+   - 温湿度センサ用クラス作成
+   - TDS水質センサ用クラス作成
+   - 実行プログラム作成
    - プログラム自動起動設定
    - Ambient動作確認
    - 水耕栽培キット組み立て
@@ -157,10 +158,9 @@ https://ambidata.io/
 
 ②`チャネル一覧`から`チャネルを作る`をクリック
 
-### 温湿度センサ用プログラム作成
+### 温湿度センサ用クラス作成
 
-`/home/pi/sensor/`に`grove_temperature_humidity_sensor.py`、`grove_tds.py`、
-`/home/pi/`に`gardening_system.py`を作成。
+`/home/pi/sensor/`に`grove_temperature_humidity_sensor.py`を作成。
 
 ```python:grove_temperature_humidity_sensor.py
 import RPi.GPIO as GPIO
@@ -300,7 +300,9 @@ class DHT(object):
         return humi, temp
 ```
 
-### TDS水質センサ用プログラム作成
+### TDS水質センサ用クラス作成
+
+`/home/pi/sensor/`に`grove_tds.py`を作成。
 
 ```python:grove_tds.py
 import math
@@ -324,6 +326,10 @@ class GroveTDS:
         else:
             return 0
 ```
+
+### 実行プログラム作成
+
+`/home/pi/`に`gardening_system.py`を作成。
 
 ```python:gardening_system.py
 #!/usr/bin/env python3
