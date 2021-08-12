@@ -180,6 +180,9 @@ https://ambidata.io/
 
 `/home/pi/sensor/`に`grove_temperature_humidity_sensor.py`を作成。
 
+seeedのサンプルコードはこちらを参照。
+https://wiki.seeedstudio.com/Grove-Beginner-Kit-For-Arduino/
+
 <details>
 <summary>温湿度センサ用クラス</summary>
 
